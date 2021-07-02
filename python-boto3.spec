@@ -3,7 +3,7 @@
 
 Name:           python-%{pkgname}
 Version:        1.17.14
-Release:        CROC1%{?buildid}%{?dist}
+Release:        CROC2%{?buildid}%{?dist}
 Summary:        The AWS SDK for Python
 
 License:        ASL 2.0
@@ -78,5 +78,8 @@ rm -rf tests/integration
 %{python3_sitelib}/%{pkgname}-%{version}-*.egg-info
 
 %changelog
+* Fri Jul 02 2021 Andrey Kulaev <akulaev@croc.ru> - 1.17.14-CROC2
+- Replace botocore dependency with croc version
+
 * Wed Feb 24 2021 Alexander Chernev <achernev@croc.ru> - 1.17.14-CROC1
 - Update to latest boto3 - 1.17.14
