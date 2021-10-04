@@ -53,6 +53,9 @@ rm -rf tests/integration
 %{python3_sitelib}/%{pkgname}-%{version}-*.egg-info
 
 %changelog
+* Fri Sep 24 2021 Alex Rudenko <arudenko@croc.ru> - 1.17.14-CROC3
+- spec: remove build for py2
+
 * Fri Jul 02 2021 Andrey Kulaev <akulaev@croc.ru> - 1.17.14-CROC2
 - Replace botocore dependency with croc version
 
