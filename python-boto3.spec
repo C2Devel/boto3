@@ -18,14 +18,14 @@ write software that makes use of services like Amazon S3
 and Amazon EC2.
 
 %package -n     python2-%{pkgname}
-Requires:       python2-botocore >= 1.20.14-CROC8
+Requires:       python2-botocore >= 1.20.14-CROC11
 Requires:       python2-jmespath >= 0.7.1
 Requires:       python2-s3transfer >= 0.3.0
 
 Summary:        The AWS SDK for Python
 BuildRequires:  python2-devel
 BuildRequires:  python2-setuptools
-Provides:       python2-%{pkgname}
+Provides:       python-boto3
 
 %description -n python2-%{pkgname}
 Boto3 is the Amazon Web Services (AWS) Software Development
@@ -34,14 +34,13 @@ write software that makes use of services like Amazon S3
 and Amazon EC2.
 
 %package -n     python%{python3_pkgversion}-%{pkgname}
-Requires:       python%{python3_pkgversion}-botocore >= 1.20.14-CROC8
+Requires:       python%{python3_pkgversion}-botocore >= 1.20.14-CROC11
 Requires:       python%{python3_pkgversion}-jmespath >= 0.7.1
 Requires:       python%{python3_pkgversion}-s3transfer >= 0.3.0
 
 Summary:        The AWS SDK for Python
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
-Provides:       python%{python3_pkgversion}-%{pkgname}
 
 %description -n python%{python3_pkgversion}-%{pkgname}
 Boto3 is the Amazon Web Services (AWS) Software Development
