@@ -53,7 +53,7 @@ def get_resource_public_actions(resource_class):
 
 
 def get_identifier_values_for_example(identifier_names):
-    return ','.join([f'\'{identifier}\'' for identifier in identifier_names])
+    return ','.join(['\'{0}\''.format(identifier) for identifier in identifier_names])
 
 
 def get_identifier_args_for_signature(identifier_names):
@@ -62,8 +62,8 @@ def get_identifier_args_for_signature(identifier_names):
 
 def get_identifier_description(resource_name, identifier_name):
     return (
-        f"The {resource_name}'s {identifier_name} identifier. "
-        f"This **must** be set."
+        "The {0}'s {1} identifier. "
+        "This **must** be set.".format(resource_name, identifier_name)
     )
 
 
@@ -81,8 +81,8 @@ def add_resource_type_overview(
     section.style.new_line()
     if intro_link is not None:
         section.write(
-            f'For more information about {resource_type.lower()} refer to the '
-            f':ref:`Resources Introduction Guide<{intro_link}>`.'
+            'For more information about {0} refer to the '
+            ':ref:`Resources Introduction Guide<{1}>`.'.format(resource_type.lower(), intro_link)
         )
         section.style.new_line()
 
@@ -143,7 +143,7 @@ class DocumentModifiedShape:
             type_section = section.get_section('param-type')
             if type_section.getvalue().decode('utf-8').startswith(':type'):
                 type_section.clear_text()
-                type_section.write(f':type {section.name}: {self._new_type}')
+                type_section.write(':type {0}: {1}'.format(section.name, self._new_type))
             else:
                 type_section.clear_text()
-                type_section.style.italics(f'({self._new_type}) -- ')
+                type_section.style.italics('({0}) -- '.format(self._new_type))

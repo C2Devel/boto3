@@ -72,8 +72,8 @@ def lazy_call(full_name, **kwargs):
 def inject_attribute(class_attributes, name, value):
     if name in class_attributes:
         raise RuntimeError(
-            f'Cannot inject class attribute "{name}", attribute '
-            f'already exists in class dict.'
+            'Cannot inject class attribute "{0}", attribute '
+            'already exists in class dict.'.format(name)
         )
     else:
         class_attributes[name] = value

@@ -150,7 +150,7 @@ class ResourceFactory:
         base_classes = [ServiceResource]
         if self._emitter is not None:
             self._emitter.emit(
-                f'creating-resource-class.{cls_name}',
+                'creating-resource-class.{0}'.format(cls_name),
                 class_attributes=attrs,
                 base_classes=base_classes,
                 service_context=service_context,
@@ -380,7 +380,7 @@ class ResourceFactory:
                     self.load()
                 else:
                     raise ResourceLoadException(
-                        f'{self.__class__.__name__} has no load method'
+                        '{0} has no load method'.format(self.__class__.__name__)
                     )
 
             return self.meta.data.get(name)

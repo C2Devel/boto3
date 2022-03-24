@@ -61,7 +61,7 @@ class ResourceDocumenter(BaseDocumenter):
         # Write out the class signature.
         class_args = get_identifier_args_for_signature(identifier_names)
         section.style.start_sphinx_py_class(
-            class_name=f'{self.class_name}({class_args})'
+            class_name='{0}({1})'.format(self.class_name, class_args)
         )
 
         # Add as short description about the resource
@@ -113,16 +113,16 @@ class ResourceDocumenter(BaseDocumenter):
             description = get_identifier_description(
                 self._resource_name, identifier_name
             )
-            section.write(f':type {identifier_name}: string')
+            section.write(':type {0}: string'.format(identifier_name))
             section.style.new_line()
-            section.write(f':param {identifier_name}: {description}')
+            section.write(':param {0}: {1}'.format(identifier_name, description))
             section.style.new_line()
 
     def _add_overview_of_members(self, section):
         for resource_member_type in self.member_map:
             section.style.new_line()
             section.write(
-                f'These are the resource\'s available {resource_member_type}:'
+                'These are the resource\'s available {0}:'.format(resource_member_type)
             )
             section.style.new_line()
             for member in self.member_map[resource_member_type]:
@@ -132,9 +132,9 @@ class ResourceDocumenter(BaseDocumenter):
                     'identifiers',
                     'references',
                 ):
-                    section.style.li(f':py:attr:`{member}`')
+                    section.style.li(':py:attr:`{0}`'.format(member))
                 else:
-                    section.style.li(f':py:meth:`{member}()`')
+                    section.style.li(':py:meth:`{0}()`'.format(member))
 
     def _add_identifiers(self, section):
         identifiers = self._resource.meta.resource_model.identifiers
@@ -261,14 +261,14 @@ class ResourceDocumenter(BaseDocumenter):
 class ServiceResourceDocumenter(ResourceDocumenter):
     @property
     def class_name(self):
-        return f'{self._service_docs_name}.ServiceResource'
+        return '{0}.ServiceResource'.format(self._service_docs_name)
 
     def _add_title(self, section):
         section.style.h2('Service Resource')
 
     def _add_description(self, section):
         official_service_name = get_official_service_name(self._service_model)
-        section.write(f'A resource representing {official_service_name}')
+        section.write('A resource representing {}'.format(official_service_name))
 
     def _add_example(self, section, identifier_names):
         section.style.start_codeblock()
@@ -277,6 +277,6 @@ class ServiceResourceDocumenter(ResourceDocumenter):
         section.style.new_line()
         section.style.new_line()
         section.write(
-            f'{self._service_name} = boto3.resource(\'{self._service_name}\')'
+            '{0} = boto3.resource(\'{0}\')'.format(self._service_name)
         )
         section.style.end_codeblock()

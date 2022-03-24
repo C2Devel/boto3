@@ -115,20 +115,20 @@ class ServiceResource:
                 continue
 
             if name not in self.meta.identifiers:
-                raise ValueError(f'Unknown keyword argument: {name}')
+                raise ValueError('Unknown keyword argument: {0}'.format(name))
 
             setattr(self, '_' + name, value)
 
         # Validate that all identifiers have been set.
         for identifier in self.meta.identifiers:
             if getattr(self, identifier) is None:
-                raise ValueError(f'Required parameter {identifier} not set')
+                raise ValueError('Required parameter {0} not set'.format(identifier))
 
     def __repr__(self):
         identifiers = []
         for identifier in self.meta.identifiers:
             identifiers.append(
-                f'{identifier}={repr(getattr(self, identifier))}'
+                '{0}={1}'.format(identifier, repr(getattr(self, identifier)))
             )
         return "{}({})".format(
             self.__class__.__name__,

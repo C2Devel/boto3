@@ -68,7 +68,7 @@ def build_identifiers(identifiers, parent, params=None, raw_response=None):
             # This value is set by the user, so ignore it here
             continue
         else:
-            raise NotImplementedError(f'Unsupported source type: {source}')
+            raise NotImplementedError('Unsupported source type: {0}'.format(source))
 
         results.append((xform_name(target), value))
 

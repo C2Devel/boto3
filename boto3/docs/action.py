@@ -161,7 +161,7 @@ def document_load_reload_action(
     example_resource_name = xform_name(resource_name)
     if service_model.service_name == resource_name:
         example_resource_name = resource_name
-    example_prefix = f'{example_resource_name}.{action_name}'
+    example_prefix = '{0}.{1}'.format(example_resource_name, action_name)
     document_model_driven_method(
         section=section,
         method_name=action_name,

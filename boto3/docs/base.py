@@ -29,4 +29,4 @@ class BaseDocumenter:
 
     @property
     def class_name(self):
-        return f'{self._service_docs_name}.{self._resource_name}'
+        return '{0}.{1}'.format(self._service_docs_name, self._resource_name)

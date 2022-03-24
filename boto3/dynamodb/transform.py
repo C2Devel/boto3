@@ -283,7 +283,7 @@ class ParameterTransformer:
     ):
         type_name = model.type_name
         if type_name in ('structure', 'map', 'list'):
-            getattr(self, f'_transform_{type_name}')(
+            getattr(self, '_transform_{0}'.format(type_name))(
                 model, params, transformation, target_shape
             )
 

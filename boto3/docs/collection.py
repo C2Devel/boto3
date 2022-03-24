@@ -87,12 +87,12 @@ def document_collection_object(
     if include_signature:
         section.style.start_sphinx_py_attr(collection_model.name)
     section.include_doc_string(
-        f'A collection of {collection_model.resource.type} resources.'
+        'A collection of {0} resources.'.format(collection_model.resource.type)
     )
     section.include_doc_string(
-        f'A {collection_model.resource.type} Collection will include all '
-        f'resources by default, and extreme caution should be taken when '
-        f'performing actions on all resources.'
+        'A {0} Collection will include all '
+        'resources by default, and extreme caution should be taken when '
+        'performing actions on all resources.'.format(collection_model.resource.type)
     )
 
 
@@ -200,8 +200,8 @@ def document_collection_method(
     custom_action_info_dict = {
         'all': {
             'method_description': (
-                f'Creates an iterable of all {collection_model.resource.type} '
-                f'resources in the collection.'
+                'Creates an iterable of all {0} '
+                'resources in the collection.'.format(collection_model.resource.type)
             ),
             'example_prefix': '{}_iterator = {}.{}.all'.format(
                 xform_name(collection_model.resource.type),
@@ -212,12 +212,12 @@ def document_collection_method(
         },
         'filter': {
             'method_description': (
-                f'Creates an iterable of all {collection_model.resource.type} '
-                f'resources in the collection filtered by kwargs passed to '
-                f'method. A {collection_model.resource.type} collection will '
-                f'include all resources by default if no filters are provided, '
-                f'and extreme caution should be taken when performing actions '
-                f'on all resources.'
+                'Creates an iterable of all {0} '
+                'resources in the collection filtered by kwargs passed to '
+                'method. A {0} collection will '
+                'include all resources by default if no filters are provided, '
+                'and extreme caution should be taken when performing actions '
+                'on all resources.'.format(collection_model.resource.type)
             ),
             'example_prefix': '{}_iterator = {}.{}.filter'.format(
                 xform_name(collection_model.resource.type),
@@ -230,8 +230,8 @@ def document_collection_method(
         },
         'limit': {
             'method_description': (
-                f'Creates an iterable up to a specified amount of '
-                f'{collection_model.resource.type} resources in the collection.'
+                'Creates an iterable up to a specified amount of '
+                '{0} resources in the collection.'.format(collection_model.resource.type)
             ),
             'example_prefix': '{}_iterator = {}.{}.limit'.format(
                 xform_name(collection_model.resource.type),
@@ -252,9 +252,10 @@ def document_collection_method(
         },
         'page_size': {
             'method_description': (
-                f'Creates an iterable of all {collection_model.resource.type} '
-                f'resources in the collection, but limits the number of '
-                f'items returned by each service call by the specified amount.'
+                'Creates an iterable of all {0} '
+                'resources in the collection, but limits the number of '
+                'items returned by each service call '
+                'by the specified amount.'.format(collection_model.resource.type)
             ),
             'example_prefix': '{}_iterator = {}.{}.page_size'.format(
                 xform_name(collection_model.resource.type),
@@ -282,5 +283,5 @@ def document_collection_method(
             event_emitter=event_emitter,
             resource_action_model=collection_model,
             include_signature=include_signature,
-            **action_info,
+            **action_info
         )

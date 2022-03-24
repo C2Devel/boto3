@@ -49,14 +49,14 @@ def document_identifier(
     description = get_identifier_description(
         resource_name, identifier_model.name
     )
-    section.write(f'*(string)* {description}')
+    section.write('*(string)* {0}'.format(description))
 
 
 def document_reference(section, reference_model, include_signature=True):
     if include_signature:
         section.style.start_sphinx_py_attr(reference_model.name)
-    reference_type = f'(:py:class:`{reference_model.resource.type}`) '
+    reference_type = '(:py:class:`{0}`) '.format(reference_model.resource.type)
     section.write(reference_type)
     section.include_doc_string(
-        f'The related {reference_model.name} if set, otherwise ``None``.'
+        'The related {0} if set, otherwise ``None``.'.format(reference_model.name)
     )

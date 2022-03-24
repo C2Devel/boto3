@@ -40,8 +40,9 @@ class UnknownAPIVersionError(
 ):
     def __init__(self, service_name, bad_api_version, available_api_versions):
         msg = (
-            f"The '{service_name}' resource does not an API version of: {bad_api_version}\n"
-            f"Valid API versions are: {available_api_versions}"
+            "The '{0}' resource does not an API version of: {1}\n"
+            "Valid API versions are: {2}".format(service_name,
+                                                 bad_api_version, available_api_versions)
         )
         # Not using super because we don't want the DataNotFoundError
         # to be called, it has a different __init__ signature.
@@ -63,8 +64,8 @@ class ResourceNotExistsError(
         )
         if has_low_level_client:
             msg = (
-                f"{msg}\nConsider using a boto3.client('{service_name}') "
-                f"instead of a resource for '{service_name}'"
+                "{0}\nConsider using a boto3.client('{1}') "
+                "instead of a resource for '{1}'".format(msg, service_name)
             )
         # Not using super because we don't want the DataNotFoundError
         # to be called, it has a different __init__ signature.
@@ -90,9 +91,10 @@ class DynamoDBOperationNotSupportedError(Boto3Error):
 
     def __init__(self, operation, value):
         msg = (
-            f'{operation} operation cannot be applied to value {value} of type '
-            f'{type(value)} directly. Must use AttributeBase object methods '
-            f'(i.e. Attr().eq()). to generate ConditionBase instances first.'
+            '{0} operation cannot be applied to value {1} of type '
+            '{2} directly. Must use AttributeBase object methods '
+            '(i.e. Attr().eq()). to generate ConditionBase'
+            ' instances first.'.format(operation, value, type(value))
         )
         Exception.__init__(self, msg)
 
@@ -106,9 +108,9 @@ class DynamoDBNeedsConditionError(Boto3Error):
 
     def __init__(self, value):
         msg = (
-            f'Expecting a ConditionBase object. Got {value} of type {type(value)}. '
-            f'Use AttributeBase object methods (i.e. Attr().eq()). to '
-            f'generate ConditionBase instances.'
+            'Expecting a ConditionBase object. Got {0} of type {1}. '
+            'Use AttributeBase object methods (i.e. Attr().eq()). to '
+            'generate ConditionBase instances.'.format(value, type(value))
         )
         Exception.__init__(self, msg)
 
